@@ -9,21 +9,22 @@ var Predator = (function () {
       loader.send();
 
       loader.addEventListener("load", function () {
-        carns = JSON.parse(this.responseText).carnivores;
-        callbackToInvoke(carns);
-
-  return {
+        carnivores = JSON.parse(this.responseText).carnivores;
+        console.log("get", carnivores);
+        callbackToInvoke(carnivores);
+        })
+      },
     loadHerbivores: function (callbackToInvoke) {
-      var loader = new XMLHttpRequest();
-      loader.open("GET", "herbivores.json");
-      loader.send();
+      var hoader = new XMLHttpRequest();
+      hoader.open("GET", "herbivores.json");
+      hoader.send();
 
-      loader.addEventListener("load", function () {
-        herbs = JSON.parse(this.responseText).herbivores;
-        callbackToInvoke(herbs);
+      hoader.addEventListener("load", function () {
+        herbivores = JSON.parse(this.responseText).herbivores;
+        console.log("get", herbivores);
+        callbackToInvoke(herbivores);
+        });
+      }  
+   };  
 
-
-      });
-    }
-  }
-})();
+})(Predator || {});
